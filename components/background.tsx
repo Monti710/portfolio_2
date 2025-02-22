@@ -11,7 +11,7 @@ export function BackgroundBeamsWithCollisionDemo() {
   useEffect(() => {
     const checkZoom = () => {
       const zoomLevel = window.devicePixelRatio * 100;
-      setIsZoomed(zoomLevel > 250);
+      setIsZoomed(zoomLevel > 200);
     };
 
     checkZoom();
@@ -31,7 +31,7 @@ export function BackgroundBeamsWithCollisionDemo() {
             <div className="absolute w-full h-full [backface-visibility:hidden]">
               <Image
                 src="/front-image.jpg"
-                alt="Front Image"
+                alt=""
                 layout="fill"
                 className="rounded-full"
               />
@@ -39,7 +39,7 @@ export function BackgroundBeamsWithCollisionDemo() {
             <div className="absolute w-full h-full [transform:rotateY(180deg)] [backface-visibility:hidden]">
               <Image
                 src="/back-image.jpeg"
-                alt="Back Image"
+                alt=""
                 layout="fill"
                 className="rounded-full"
               />
@@ -53,14 +53,12 @@ export function BackgroundBeamsWithCollisionDemo() {
             <span className="bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4 from-purple-500 via-violet-500 to-pink-500  text-4xl md:text-5xl lg:text-6xl font-bold">
               Software Engineer
             </span>
-            <p className=" relative text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-center text-white">
-               Hi! I&apos;m Ismael, a <span className="font-semibold text-purple-400">Web Developer</span> based in Mexico 🇲🇽
+            <p className="relative text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-center text-white tracking-wider">
+              Hi! I&apos;m Ismael, a <span className="font-semibold text-purple-400">Web Developer</span> based in Mexico 🇲🇽
             </p>
           </span>
         </h2>
       </div>
-
-      {/* Dinosaur GIF animado, oculto si el zoom supera 250% */}
       <div className={`absolute bottom-0 left-0 right-0 z-20 ${isZoomed ? 'hidden' : ''}`}>
         <div className="w-full flex justify-center p-0">
           <div className="relative w-32 h-32 animate-dinosaur">
