@@ -1,6 +1,6 @@
 "use client";
 
-import { IconMail, IconBrandLinkedin, IconBrandGithub, IconPhone } from "@tabler/icons-react";
+import { IconMail, IconBrandLinkedin, IconBrandGithub} from "@tabler/icons-react";
 
 export function ContactSection() {
   return (

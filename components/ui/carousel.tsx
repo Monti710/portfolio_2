@@ -1,6 +1,7 @@
 "use client";
 import { IconArrowNarrowRight, IconBrandGithub } from "@tabler/icons-react";
 import { useState, useRef, useId, useEffect } from "react";
+import Image from "next/image";
 
 interface SlideData {
   title: string;
@@ -19,7 +20,13 @@ interface SlideProps {
   handleModalOpen: (slide: SlideData) => void;
 }
 
-const Slide = ({ slide, index, current, handleSlideClick, handleModalOpen }: SlideProps) => {
+const Slide = ({
+  slide,
+  index,
+  current,
+  handleSlideClick,
+  handleModalOpen,
+}: SlideProps) => {
   const slideRef = useRef<HTMLLIElement>(null);
   const xRef = useRef(0);
   const yRef = useRef(0);
@@ -55,10 +62,6 @@ const Slide = ({ slide, index, current, handleSlideClick, handleModalOpen }: Sli
     yRef.current = 0;
   };
 
-  const imageLoaded = (event: React.SyntheticEvent<HTMLImageElement>) => {
-    event.currentTarget.style.opacity = "1";
-  };
-
   const { src, button, title } = slide;
 
   return (
@@ -87,16 +90,16 @@ const Slide = ({ slide, index, current, handleSlideClick, handleModalOpen }: Sli
                 : "none",
           }}
         >
-          <img
+          <Image
+            src={src}
+            alt={title}
+            width={450}
+            height={300}
             className="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-600 ease-in-out"
             style={{
               opacity: current === index ? 1 : 0.5,
             }}
-            alt={title}
-            src={src}
-            onLoad={imageLoaded}
             loading="eager"
-            decoding="sync"
           />
           {current === index && (
             <div className="absolute inset-0 bg-black/30 transition-all duration-1000" />
@@ -134,7 +137,11 @@ interface CarouselControlProps {
   handleClick: () => void;
 }
 
-const CarouselControl = ({ type, title, handleClick }: CarouselControlProps) => {
+const CarouselControl = ({
+  type,
+  title,
+  handleClick,
+}: CarouselControlProps) => {
   return (
     <button
       className={`w-10 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
@@ -182,7 +189,10 @@ export function Carousel({ slides }: CarouselProps) {
   const id = useId();
 
   return (
-    <div className="relative w-[450px] h-[300px] mx-auto" aria-labelledby={`carousel-heading-${id}`}>
+    <div
+      className="relative w-[450px] h-[300px] mx-auto"
+      aria-labelledby={`carousel-heading-${id}`}
+    >
       <ul
         className="absolute flex mx-[-4vmin] transition-transform duration-1000 ease-in-out"
         style={{
@@ -224,25 +234,30 @@ export function Carousel({ slides }: CarouselProps) {
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-4">{selectedSlide.title}</h2>
-            <img
+            <Image
               src={selectedSlide.src}
               alt={selectedSlide.title}
+              width={800}
+              height={256}
               className="w-full h-64 object-cover rounded-lg mb-4"
             />
-            <p className="text-base leading-relaxed mb-4">{selectedSlide.description}</p>
+            <p className="text-base leading-relaxed mb-4">
+              {selectedSlide.description}
+            </p>
 
-            {selectedSlide.technologies && selectedSlide.technologies.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-3">
-                {selectedSlide.technologies.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="inline-flex items-center px-3 py-1 bg-neutral-200 dark:bg-neutral-700 text-xs rounded-full font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            )}
+            {selectedSlide.technologies &&
+              selectedSlide.technologies.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {selectedSlide.technologies.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-flex items-center px-3 py-1 bg-neutral-200 dark:bg-neutral-700 text-xs rounded-full font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
 
             <a
               href={selectedSlide.github}

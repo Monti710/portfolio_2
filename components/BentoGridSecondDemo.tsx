@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -27,10 +29,12 @@ export function BentoGridDemo() {
           description={
             <div className="flex flex-col gap-2">
               {item.image && (
-                <img
+                <Image
                   src={item.image}
                   alt={`${item.title} image`}
-                  className="w-40 h-40 object-cover rounded-lg mx-auto block"
+                  width={160}
+                  height={160}
+                  className="object-cover rounded-lg mx-auto block"
                 />
               )}
               <TextGenerateEffect
@@ -60,37 +64,45 @@ const items = [
     description:
       "I'm Ismael Montiel, a software engineer passionate about solving problems through code and creating impactful solutions. Based in Manzanillo, Colima, Mexico.",
     className: "lg:col-span-2 sm:col-span-2 md:row-span-2",
-    icon: <IconClipboardCopy className="h-8 w-8 sm:h-10 sm:w-10 text-yellow-500 dark:text-yellow-400" />,
-    image: "/programmer.png", // Make sure this path is correct
+    icon: (
+      <IconClipboardCopy className="h-8 w-8 sm:h-10 sm:w-10 text-yellow-500 dark:text-yellow-400" />
+    ),
+    image: "/programmer.png", // Asegúrate de que esta ruta esté en /public
   },
   {
     title: "My Profession",
     description:
       "Software engineer specializing in web and mobile development. Proficient in modern technologies like JavaScript, Python, and Kotlin.",
     className: "lg:col-span-2 sm:col-span-2 md:row-span-1",
-    icon: <IconClipboardCopy className="h-8 w-8 sm:h-10 sm:w-10 text-indigo-500 dark:text-indigo-400" />,
+    icon: (
+      <IconClipboardCopy className="h-8 w-8 sm:h-10 sm:w-10 text-indigo-500 dark:text-indigo-400" />
+    ),
   },
   {
     title: "Hobbies",
     description:
-      "In my free time, I enjoy gaming, reading (especially sci-fi and new technologie), playing soccer, staying active at the gym.",
+      "In my free time, I enjoy gaming, reading (especially sci-fi and new technologies), playing soccer, and staying active at the gym.",
     className: "lg:col-span-2 sm:col-span-2 md:row-span-1",
-    icon: <IconSignature className="h-8 w-8 sm:h-10 sm:w-10 text-green-500 dark:text-green-400" />,
+    icon: (
+      <IconSignature className="h-8 w-8 sm:h-10 sm:w-10 text-green-500 dark:text-green-400" />
+    ),
   },
   {
     title: "My Goals",
     description:
       "My goals include growing as a software engineer, contributing to open-source projects, and creating a positive impact through technology.",
     className: "lg:col-span-2 sm:col-span-2 md:row-span-1",
-    icon: <IconTableColumn className="h-8 w-8 sm:h-10 sm:w-10 text-red-500 dark:text-red-400" />,
+    icon: (
+      <IconTableColumn className="h-8 w-8 sm:h-10 sm:w-10 text-red-500 dark:text-red-400" />
+    ),
   },
   {
     title: "My Skills",
     description:
-      "Technical skills: JavaScript, Python, PHP," +
-      " React, Node.js, Next, Django, C++, C, Bash, " +
-      "Java, Kotlin. Always learning new technologies to stay ahead in the ever-evolving tech landscape.",
+      "Technical skills: JavaScript, Python, PHP, React, Node.js, Next, Django, C++, C, Bash, Java, Kotlin. Always learning new technologies to stay ahead in the ever-evolving tech landscape.",
     className: "lg:col-span-2 sm:col-span-2 md:row-span-1 text-center",
-    icon: <IconCode className="h-8 w-8 sm:h-10 sm:w-10 text-gray-800 dark:text-gray-200" />,
+    icon: (
+      <IconCode className="h-8 w-8 sm:h-10 sm:w-10 text-gray-800 dark:text-gray-200" />
+    ),
   },
 ];
