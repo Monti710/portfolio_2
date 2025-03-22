@@ -37,7 +37,7 @@ body {
         box-shadow: 0 0 10px rgba(17, 0, 255, 0.5);
       }
       50% {
-        box-shadow: 0 0 20px rgb(0, 255, 26);
+        box-shadow: 0 0 20px rgb(166, 206, 255);
       }
       100% {
         box-shadow: 0 0 10px rgba(85, 0, 255, 0.5);
@@ -47,3 +47,5 @@ body {
       animation: glow 1.5s infinite alternate;
     }
   }
+
+  
