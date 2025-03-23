@@ -12,7 +12,7 @@ export function CarouselDemo() {
       technologies: ["Python", "Pygame"],
     },
     {
-      title: "Sctock Master",
+      title: "SctockMaster",
       button: "Stock of the products",
       src: "/stockmaster.png",
       description: "Aplicación web para gestión de inventario y control de stock de productos en tiempo real.",
